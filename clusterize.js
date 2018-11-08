@@ -279,7 +279,8 @@
         this.content_elem.style['counter-increment'] = 'clusterize-counter ' + (data.rows_above-1);
         callbacks.clusterChanged && callbacks.clusterChanged();
       } else if(only_bottom_offset_changed) {
-        this.content_elem.lastChild.style.height = data.bottom_offset + 'px';
+        var el = this.content_elem.querySelector('.clusterize-bottom-space');
+        if(el && el.style) el.style.height = data.bottom_offset + 'px';
       }
     },
     // unfortunately ie <= 9 does not allow to use innerHTML for table elements, so make a workaround
